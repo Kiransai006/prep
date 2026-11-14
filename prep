@@ -1,106 +1,188 @@
-Your introduction (simple English)
 
-Speak slowly. Each paragraph should take about 20 seconds, and the whole intro about 90 seconds.
-
-"Hi, I'm Kiran. I'm a DevOps engineer, and I live in Dublin.
+Interview Introduction and Follow-up Q&A (Simple English)
+14 Nov 2026 · @kiran
+Say the intro slowly; it takes about 90 seconds. Each answer below is short enough to say in 30–40 seconds. Replace anything in [brackets] with your real details.
+Your introduction
+Hi, I'm Kiran. I'm a DevOps engineer, and I live in Dublin.
 I started my career at Debots in Hyderabad, doing cloud support work on AWS. Then I joined Cognizant, where I worked for about three and a half years on the RELX Group account. My project was Lexis+, the legal research platform from LexisNexis. Lawyers use it to search case law, check citations with Shepard's, and analyse their legal briefs.
 In that project, I worked on the platform side. Our services ran on Amazon EKS. I wrote Terraform code to create the AWS infrastructure. I built and looked after Jenkins pipelines that tested the code, scanned it, and deployed it to Kubernetes. I also set up monitoring with Prometheus and Grafana, and I was part of the on-call team.
 Some results I'm proud of: we made releases about 30% faster, and we fixed problems about 40% faster after we improved our alerts.
-After that, I moved to Ireland and finished my Master's in Computing Science at Griffith College. Now I want to grow as a platform engineer and work more on the Kubernetes side itself. That's why this role interests me."
-
+After that, I moved to Ireland and finished my Master's in Computing Science at Griffith College. Now I want to grow as a platform engineer and work more on the Kubernetes side itself. That's why this role interests me.
 For Sony only, add one line: "Recently I've been learning Go and I built a small Kubernetes operator with Kubebuilder, because I want to build controllers, not just use them."
-
-Follow-up questions and answers
-
-Each answer is short and easy to say. Replace any [bracket] with your real details.
-
-About your background
-
+Follow-up questions: your background
 1. Tell me more about your work at Debots.
 "It was cloud support work. I helped deploy applications on AWS, used Terraform for EC2, S3, VPC and IAM, worked with Jenkins pipelines, and checked monitoring in CloudWatch. It was my first hands-on job with the cloud."
-
 2. Debots was during your degree?
 "Yes, it overlapped with my final year. I worked there and finished my degree at the same time, then joined Cognizant."
-
 3. What did you do at Cognizant before Lexis+?
 Answer this one carefully. Your old CV shows a Kotak Mahindra Bank entry, but your new version shows one project. Say what matches the CV Sony has, and make sure it matches what Cognizant would confirm in a background check.
-
 4. Why did you leave Cognizant?
 "I wanted to do my Master's abroad and grow my career. I chose Ireland because of its strong tech industry."
-
 5. What are you doing now?
 "I finished my MSc this year. During my studies I worked part-time as a security operations team lead. I also kept my skills current with my own projects: OmniShop on EKS with ArgoCD, and now a Kubernetes operator in Go."
-
-About Lexis+
-
+Follow-up questions: Lexis+
 6. What is Lexis+?
 "It's LexisNexis's legal research platform. Lawyers use it to search case law and statutes, check if a case is still valid using Shepard's citations, and analyse their briefs."
-
 7. Were you a developer on Lexis+?
 "No, I was on the DevOps and platform side. The developers wrote the services. My job was to build, deploy, run and monitor them on AWS and Kubernetes."
-
 8. Did you work on Lexis+ AI?
 Say yes only if you did. If you didn't: "No, a different team built the AI features. I supported the shared platform that the services ran on."
-
 9. How big was the platform?
 "About [25] microservices, mostly Java Spring Boot. In production we had about [8] worker nodes normally and up to [20] at peak, across three Availability Zones."
-
-About EKS and Kubernetes
-
+Follow-up questions: EKS and Kubernetes
 10. What did you do in Kubernetes day to day?
 "I deployed services with Helm, set up autoscaling, set CPU and memory requests and limits, fixed pods that were failing, and helped with cluster upgrades."
-
 11. How did autoscaling work?
 "We used HPA to add pods when CPU went above 70%. If there was no space for the new pods, Cluster Autoscaler added a new node. When traffic dropped, both scaled back down."
-
 12. Tell me about a problem you fixed in Kubernetes.
 "Once, pods kept restarting after a release. I checked with kubectl describe and saw they were OOMKilled, which means out of memory. I rolled back first, so users were not affected. Then we increased the memory limit and set the Java heap size correctly. After that it was stable."
-
 13. How did you deploy with zero downtime?
 "We used rolling updates with readiness probes, so a new pod gets traffic only when it's ready. For risky changes we used blue-green or canary deployments. In a canary, we sent 10% of traffic to the new version first and checked the errors before going to 100%."
-
-About AWS and Terraform
-
+Follow-up questions: AWS and Terraform
 14. Which AWS services did you use?
 "EKS, EC2, VPC, IAM, S3, RDS, ECR, load balancers, Route 53 and CloudWatch."
-
 15. How did you use Terraform?
 "I wrote reusable modules for the VPC, EKS, RDS and IAM. We stored the state file in S3 and used DynamoDB for locking, so two people couldn't change the same infrastructure at the same time."
-
 16. What if someone changes something manually in the AWS console?
 "The next terraform plan shows the difference, which is called drift. Then we either fix the code or apply it again to go back to the correct state."
-
-About Jenkins
-
+Follow-up questions: Jenkins and monitoring
 17. Explain your Jenkins pipeline.
 "When a developer merges code, a webhook starts Jenkins. The pipeline builds the code with Maven, runs the tests, checks code quality with SonarQube, builds a Docker image, scans it with Trivy, pushes it to ECR, and deploys it with Helm: first to dev, then staging, then production after approval."
-
 18. How did you make releases 30% faster?
 "We ran builds in Kubernetes pods instead of fixed servers, so jobs didn't wait in a queue. We cached Maven dependencies, ran some stages in parallel, and used one shared library for all services."
-
 19. How do you keep passwords safe in Jenkins?
 "We stored them in the Jenkins credentials store, so they are hidden in the logs. For AWS we used IAM roles, not access keys."
-
-About monitoring
-
 20. How did you fix problems 40% faster?
 "We had too many alerts, so people started ignoring them. We removed the noisy ones and focused on what users actually feel, like errors and slow responses. We also added a runbook link and a Grafana dashboard link to every alert. After that, the on-call engineer knew where to start."
-
-About the Sony role
-
+Follow-up questions: the Sony role
 21. Have you built Kubernetes controllers in production?
 "Not in production yet. I used operators like ArgoCD and the Prometheus Operator a lot. To learn how they work inside, I built a small operator with Kubebuilder in Go. I understand reconciliation, CRDs and finalizers, and I'm ready to go deeper."
-
 22. How good is your Go?
 "Working level. I'm comfortable with structs, interfaces, error handling, goroutines and channels. Python and Bash were my main languages before, and I'm improving my Go every week."
-
 23. Why do you want this role?
 "In my DevOps work I automated a lot of steps with scripts and pipelines. Controllers do the same job better, because they keep checking and fixing the system all the time. I want to build that kind of automation, and PlayStation's cloud gaming platform is a great place to learn it at scale."
-
-Three tips for speaking
-
-	•	Answer, then stop. Keep it to 30–40 seconds, and let them ask the next question.
-	•	If you don't know, say so: "I haven't done that directly, but this is how I would approach it…"
-	•	Use "I" for your own work and "we" for team work. Interviewers listen for what you did personally.
-
-The numbers in brackets (25 services, 8 nodes, 30%, 40%) come from the reference guide. Before Tuesday, change them to what you really remember so you can explain them if they ask "how did you measure that?"
+More questions: Go language
+24. Why is Go used so much for Kubernetes?
+"Kubernetes itself is written in Go. Go is fast, compiles to a single binary, and has simple built-in concurrency with goroutines and channels. The main Kubernetes libraries, like client-go and controller-runtime, are in Go."
+25. What is a goroutine?
+"A goroutine is a very lightweight thread managed by the Go runtime. You start one by writing go before a function call. You can run thousands of them because each one uses very little memory."
+26. What is a channel?
+"A channel is a pipe that goroutines use to send data to each other safely. One goroutine sends with ch <- value, another receives with value := <-ch."
+27. Buffered vs unbuffered channel?
+"An unbuffered channel makes the sender wait until a receiver takes the value. A buffered channel has space for some values, so the sender only waits when the buffer is full."
+28. What does select do?
+"select waits on several channels at the same time and runs whichever one is ready first. It's often used with a timeout or with ctx.Done() to stop work cleanly."
+29. What is CSP, and how does it relate to Go?
+"CSP means Communicating Sequential Processes. The idea is: don't share memory to communicate; communicate to share memory. In Go, that means goroutines pass data through channels instead of all changing the same variable. Kubernetes controllers follow this idea: events go into a work queue, and worker goroutines take items from it."
+30. How do you wait for several goroutines to finish?
+"I use sync.WaitGroup. I call wg.Add(1) before starting each goroutine, wg.Done() when it finishes, and wg.Wait() to wait for all of them."
+31. What is a race condition and how do you avoid it?
+"It's when two goroutines change the same data at the same time and the result is unpredictable. I avoid it with channels or a sync.Mutex, and I test with go test -race to detect it."
+32. How does error handling work in Go?
+"Go has no exceptions. Functions return an error as the last value, and you check it right away with if err != nil. You can wrap errors with fmt.Errorf("...: %w", err) to add context."
+33. What is an interface in Go?
+"An interface is a set of method signatures. Any type that has those methods automatically satisfies the interface; you don't declare it. This makes testing easy, because you can pass a fake implementation. For example, controller-runtime's client.Client is an interface."
+34. What does defer do?
+"defer runs a function call when the surrounding function returns. It's used for cleanup, like closing a file or unlocking a mutex, so you don't forget it."
+35. What is context used for?
+"context.Context carries deadlines, cancellation signals and request values across functions and goroutines. In a controller, every Reconcile call gets a context, and you pass it to API calls so they stop if the controller shuts down."
+36. Value receiver vs pointer receiver?
+"A value receiver works on a copy, so changes are lost. A pointer receiver works on the original, so it can change it and avoids copying big structs. Most methods on structs use pointer receivers."
+37. How do you manage dependencies in Go?
+"With Go modules. go mod init creates go.mod, and go mod tidy adds or removes dependencies. Versions are locked in go.sum."
+38. A small example you can explain:
+func worker(ctx context.Context, jobs <-chan string, wg *sync.WaitGroup) {
+    defer wg.Done()
+    for {
+        select {
+        case job, ok := <-jobs:
+            if !ok {
+                return // channel closed
+            }
+            fmt.Println("processing", job)
+        case <-ctx.Done():
+            return // cancelled
+        }
+    }
+}
+"Each worker reads jobs from a channel until the channel is closed or the context is cancelled. defer wg.Done() tells the WaitGroup it has finished. This is the same pattern a controller's workers use."
+More questions: Kubernetes
+39. Explain the Kubernetes architecture.
+"There is a control plane and worker nodes. The control plane has the API server (the front door), etcd (the database that stores the cluster state), the scheduler (picks a node for each new pod), and the controller manager (runs the built-in controllers). Each worker node runs the kubelet (starts and watches pods), a container runtime, and kube-proxy (handles Service networking)."
+40. What happens when you run kubectl apply -f deployment.yaml?
+"kubectl sends the YAML to the API server. The API server checks it and saves it in etcd. The Deployment controller sees it and creates a ReplicaSet, and the ReplicaSet controller creates the pods. The scheduler gives each pod a node. Then the kubelet on that node pulls the image and starts the container."
+41. Pod vs Deployment?
+"A pod is one or more containers that run together. A Deployment manages pods for you: it keeps the right number running, replaces failed ones, and does rolling updates. In real work, we never create bare pods."
+42. Deployment vs StatefulSet vs DaemonSet?
+"A Deployment is for stateless apps where every pod is the same. A StatefulSet is for apps that need a stable name and their own storage, like databases or Kafka. A DaemonSet runs one pod on every node, like log or monitoring agents."
+43. What are the Service types?
+"ClusterIP is internal only. NodePort opens a port on every node. LoadBalancer creates a cloud load balancer. ExternalName is a DNS alias to something outside the cluster."
+44. Service vs Ingress?
+"A Service gives a stable address to a group of pods. An Ingress gives HTTP routing rules, like which path or hostname goes to which Service. An ingress controller, like the AWS Load Balancer Controller, makes those rules real."
+45. ConfigMap vs Secret?
+"Both give configuration to pods, as environment variables or files. ConfigMaps are for normal settings. Secrets are for passwords and keys; they can be encrypted at rest and limited with RBAC. In production we often keep secrets in AWS Secrets Manager."
+46. Readiness vs liveness probe?
+"Readiness says whether the pod can receive traffic; if it fails, the pod is removed from the Service but not restarted. Liveness says whether the pod is still alive; if it fails, the kubelet restarts the container."
+47. What are requests and limits?
+"A request is what the pod is guaranteed, and the scheduler uses it to place the pod. A limit is the maximum. If a pod uses more CPU than its limit, it is slowed down. If it uses more memory than its limit, it is killed (OOMKilled)."
+48. What is RBAC?
+"Role-Based Access Control. A Role or ClusterRole lists what actions are allowed on which resources. A RoleBinding gives that role to a user, group or ServiceAccount. For example, the Jenkins ServiceAccount can only deploy into the app namespaces."
+49. Taints/tolerations vs node affinity?
+"A taint on a node keeps pods away unless they have a matching toleration. Node affinity pulls pods towards nodes with certain labels. We tainted the system nodes so only system pods like CoreDNS ran there."
+50. What is a PodDisruptionBudget?
+"It sets how many pods must stay up during voluntary disruptions, like a node drain or upgrade. With minAvailable 2, Kubernetes won't evict a pod if that would leave fewer than 2 running."
+51. A pod is Pending. What do you check?
+"I run kubectl describe pod and read the events. Common reasons: not enough CPU or memory on any node, a taint without a toleration, a PVC that isn't bound, or no free IPs in the subnet."
+52. What is a CRD?
+"A CustomResourceDefinition adds a new resource type to the Kubernetes API, for example kind: WebApp. After that you can create, list and watch WebApp objects with kubectl, just like Deployments."
+53. What is a controller, and what is an operator?
+"A controller is a loop that watches resources, compares what you want (spec) with what exists, and makes changes to match. An operator is a controller plus a CRD for one specific application, for example to install, upgrade or back up a database."
+54. What does reconcile mean?
+"It's the function the controller runs for each object: read the object, check the real state, create, update or delete things to match the spec, then update the status. It must be idempotent, which means running it twice gives the same result."
+55. What is a finalizer?
+"A finalizer stops an object from being deleted until the controller has cleaned up, for example deleting a cloud load balancer or a DNS record. After cleanup, the controller removes the finalizer and Kubernetes deletes the object."
+56. What are owner references?
+"They link a child object to its parent. If my operator creates a Deployment for a WebApp, the Deployment's owner is the WebApp. When the WebApp is deleted, Kubernetes garbage-collects the Deployment automatically."
+More questions: Terraform
+57. What is Terraform?
+"Terraform is an Infrastructure as Code tool. I write what infrastructure I want in HCL files, and Terraform creates, changes or deletes cloud resources to match. It's declarative: I describe the end state, not the steps."
+58. What are the main Terraform commands?
+"terraform init downloads providers and sets up the backend. fmt and validate check the code. plan shows what will change. apply makes the changes. destroy removes everything. I always read the plan before applying."
+59. What is the state file?
+"It's a JSON file where Terraform records what it created and the real IDs, like the VPC ID. Terraform compares the code, the state and the real cloud to decide what to change. Without state, it doesn't know what it manages."
+60. Why use a remote backend?
+"So the whole team uses the same state, and it isn't lost on someone's laptop. We used S3 with versioning and encryption for the state, and a DynamoDB table for locking, so only one apply can run at a time."
+61. The state file has secrets in it. How do you protect it?
+"The S3 bucket is encrypted with KMS, has versioning, blocks public access, and only the pipeline role and a few admins can read it. We also mark variables as sensitive = true so they don't print in the plan output."
+62. What is a module?
+"A module is a reusable folder of Terraform code with inputs (variables) and outputs. For example, one VPC module used for dev, staging and prod with different CIDR ranges. It keeps environments consistent and avoids copy-paste."
+63. Variables, outputs and locals?
+"Variables are inputs to a module. Outputs are values a module returns, like a subnet ID that another module needs. Locals are named values inside a module, used to avoid repeating the same expression."
+64. count vs for_each?
+"count creates N copies indexed by number. for_each creates one per item in a map or set, keyed by name. I prefer for_each, because removing an item from the middle of a list with count shifts the indexes and can recreate other resources."
+65. What is a data source?
+"A data source reads something that already exists, without managing it. For example, data "aws_ami" to find the latest Amazon Linux AMI, or reading an existing VPC created by another team."
+66. What does the lifecycle block do?
+"It changes how Terraform replaces resources. prevent_destroy stops accidental deletion, which we used on RDS. create_before_destroy builds the new resource before removing the old one, to avoid downtime. ignore_changes tells Terraform to ignore fields changed outside it, like a node group's desired size changed by the autoscaler."
+67. How do you bring an existing resource under Terraform?
+"I write the resource block, then run terraform import (or use an import block in newer versions) to add it to the state. Then I run plan and adjust the code until it shows no changes."
+68. A resource was deleted by mistake. How do you recover?
+"I run terraform plan. Terraform sees the resource is missing from the cloud and plans to create it again, and then I apply. For data, like a database, I restore from a snapshot first."
+69. How do you force Terraform to recreate one resource?
+"terraform apply -replace=aws_instance.web. The older way was terraform taint."
+70. Workspaces or separate folders for environments?
+"We used separate folders per environment with their own backend keys and tfvars. It's clearer and safer, because you can't apply to prod by being in the wrong workspace."
+71. How do you pin versions?
+"In the terraform block I set required_version for Terraform and required_providers with version ranges, like ~> 5.0 for AWS. The .terraform.lock.hcl file locks exact provider versions, and we commit it to Git."
+72. How did Terraform fit in your CI/CD?
+"Terraform had its own pipeline: on a pull request it ran fmt, validate and plan, and posted the plan for review. After approval and merge, it ran apply. Nobody ran apply from a laptop for shared environments."
+Speaking tips and numbers to check
+• Answer, then stop. Keep it to 30–40 seconds, and let them ask the next question.
+• If you don't know, say so: "I haven't done that directly, but this is how I would approach it…"
+• Use "I" for your own work and "we" for team work. Interviewers listen for what you did personally.
+Before Tuesday, check these numbers against what you really remember, so you can explain them if asked "how did you measure that?"
+[ ] About 25 microservices
+[ ] About 8 worker nodes normally, up to 20 at peak
+[ ] Releases about 30% faster
+[ ] Problems fixed about 40% faster
+[ ] HPA scaling at 70% CPU
