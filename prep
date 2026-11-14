@@ -1,0 +1,106 @@
+Your introduction (simple English)
+
+Speak slowly. Each paragraph should take about 20 seconds, and the whole intro about 90 seconds.
+
+"Hi, I'm Kiran. I'm a DevOps engineer, and I live in Dublin.
+I started my career at Debots in Hyderabad, doing cloud support work on AWS. Then I joined Cognizant, where I worked for about three and a half years on the RELX Group account. My project was Lexis+, the legal research platform from LexisNexis. Lawyers use it to search case law, check citations with Shepard's, and analyse their legal briefs.
+In that project, I worked on the platform side. Our services ran on Amazon EKS. I wrote Terraform code to create the AWS infrastructure. I built and looked after Jenkins pipelines that tested the code, scanned it, and deployed it to Kubernetes. I also set up monitoring with Prometheus and Grafana, and I was part of the on-call team.
+Some results I'm proud of: we made releases about 30% faster, and we fixed problems about 40% faster after we improved our alerts.
+After that, I moved to Ireland and finished my Master's in Computing Science at Griffith College. Now I want to grow as a platform engineer and work more on the Kubernetes side itself. That's why this role interests me."
+
+For Sony only, add one line: "Recently I've been learning Go and I built a small Kubernetes operator with Kubebuilder, because I want to build controllers, not just use them."
+
+Follow-up questions and answers
+
+Each answer is short and easy to say. Replace any [bracket] with your real details.
+
+About your background
+
+1. Tell me more about your work at Debots.
+"It was cloud support work. I helped deploy applications on AWS, used Terraform for EC2, S3, VPC and IAM, worked with Jenkins pipelines, and checked monitoring in CloudWatch. It was my first hands-on job with the cloud."
+
+2. Debots was during your degree?
+"Yes, it overlapped with my final year. I worked there and finished my degree at the same time, then joined Cognizant."
+
+3. What did you do at Cognizant before Lexis+?
+Answer this one carefully. Your old CV shows a Kotak Mahindra Bank entry, but your new version shows one project. Say what matches the CV Sony has, and make sure it matches what Cognizant would confirm in a background check.
+
+4. Why did you leave Cognizant?
+"I wanted to do my Master's abroad and grow my career. I chose Ireland because of its strong tech industry."
+
+5. What are you doing now?
+"I finished my MSc this year. During my studies I worked part-time as a security operations team lead. I also kept my skills current with my own projects: OmniShop on EKS with ArgoCD, and now a Kubernetes operator in Go."
+
+About Lexis+
+
+6. What is Lexis+?
+"It's LexisNexis's legal research platform. Lawyers use it to search case law and statutes, check if a case is still valid using Shepard's citations, and analyse their briefs."
+
+7. Were you a developer on Lexis+?
+"No, I was on the DevOps and platform side. The developers wrote the services. My job was to build, deploy, run and monitor them on AWS and Kubernetes."
+
+8. Did you work on Lexis+ AI?
+Say yes only if you did. If you didn't: "No, a different team built the AI features. I supported the shared platform that the services ran on."
+
+9. How big was the platform?
+"About [25] microservices, mostly Java Spring Boot. In production we had about [8] worker nodes normally and up to [20] at peak, across three Availability Zones."
+
+About EKS and Kubernetes
+
+10. What did you do in Kubernetes day to day?
+"I deployed services with Helm, set up autoscaling, set CPU and memory requests and limits, fixed pods that were failing, and helped with cluster upgrades."
+
+11. How did autoscaling work?
+"We used HPA to add pods when CPU went above 70%. If there was no space for the new pods, Cluster Autoscaler added a new node. When traffic dropped, both scaled back down."
+
+12. Tell me about a problem you fixed in Kubernetes.
+"Once, pods kept restarting after a release. I checked with kubectl describe and saw they were OOMKilled, which means out of memory. I rolled back first, so users were not affected. Then we increased the memory limit and set the Java heap size correctly. After that it was stable."
+
+13. How did you deploy with zero downtime?
+"We used rolling updates with readiness probes, so a new pod gets traffic only when it's ready. For risky changes we used blue-green or canary deployments. In a canary, we sent 10% of traffic to the new version first and checked the errors before going to 100%."
+
+About AWS and Terraform
+
+14. Which AWS services did you use?
+"EKS, EC2, VPC, IAM, S3, RDS, ECR, load balancers, Route 53 and CloudWatch."
+
+15. How did you use Terraform?
+"I wrote reusable modules for the VPC, EKS, RDS and IAM. We stored the state file in S3 and used DynamoDB for locking, so two people couldn't change the same infrastructure at the same time."
+
+16. What if someone changes something manually in the AWS console?
+"The next terraform plan shows the difference, which is called drift. Then we either fix the code or apply it again to go back to the correct state."
+
+About Jenkins
+
+17. Explain your Jenkins pipeline.
+"When a developer merges code, a webhook starts Jenkins. The pipeline builds the code with Maven, runs the tests, checks code quality with SonarQube, builds a Docker image, scans it with Trivy, pushes it to ECR, and deploys it with Helm: first to dev, then staging, then production after approval."
+
+18. How did you make releases 30% faster?
+"We ran builds in Kubernetes pods instead of fixed servers, so jobs didn't wait in a queue. We cached Maven dependencies, ran some stages in parallel, and used one shared library for all services."
+
+19. How do you keep passwords safe in Jenkins?
+"We stored them in the Jenkins credentials store, so they are hidden in the logs. For AWS we used IAM roles, not access keys."
+
+About monitoring
+
+20. How did you fix problems 40% faster?
+"We had too many alerts, so people started ignoring them. We removed the noisy ones and focused on what users actually feel, like errors and slow responses. We also added a runbook link and a Grafana dashboard link to every alert. After that, the on-call engineer knew where to start."
+
+About the Sony role
+
+21. Have you built Kubernetes controllers in production?
+"Not in production yet. I used operators like ArgoCD and the Prometheus Operator a lot. To learn how they work inside, I built a small operator with Kubebuilder in Go. I understand reconciliation, CRDs and finalizers, and I'm ready to go deeper."
+
+22. How good is your Go?
+"Working level. I'm comfortable with structs, interfaces, error handling, goroutines and channels. Python and Bash were my main languages before, and I'm improving my Go every week."
+
+23. Why do you want this role?
+"In my DevOps work I automated a lot of steps with scripts and pipelines. Controllers do the same job better, because they keep checking and fixing the system all the time. I want to build that kind of automation, and PlayStation's cloud gaming platform is a great place to learn it at scale."
+
+Three tips for speaking
+
+	•	Answer, then stop. Keep it to 30–40 seconds, and let them ask the next question.
+	•	If you don't know, say so: "I haven't done that directly, but this is how I would approach it…"
+	•	Use "I" for your own work and "we" for team work. Interviewers listen for what you did personally.
+
+The numbers in brackets (25 services, 8 nodes, 30%, 40%) come from the reference guide. Before Tuesday, change them to what you really remember so you can explain them if they ask "how did you measure that?"
